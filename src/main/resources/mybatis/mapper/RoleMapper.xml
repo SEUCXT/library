@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.netease.library.mapper.RoleMapper">
+
+    <resultMap id="roleResultMap" type="com.netease.library.model.Role">
+        <result property="id" column="id" />
+        <result property="role_name" column="role_name" />
+    </resultMap>
+
+    <insert id="addRole" parameterType="com.netease.library.model.Role">
+        INSERT INTO
+        t_role(role_name)
+        VALUES (#{role_name})
+    </insert>
+
+    <select id="getRoleById" parameterType="Long" resultMap="roleResultMap">
+        select id, role_name
+        from t_role
+        WHERE id = #{id}
+    </select>
+
+</mapper>
